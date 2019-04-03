@@ -56,7 +56,7 @@ class NeuralODE:
       with tf.name_scope("forward"):
         t0 = tf.to_float(self._t[0])
         state = [t0, inputs]
-        _append_state(state)
+        append_state(state)
         for dt in self._deltas_t:
                 state = self._solver(
                     func=_forward_dynamics, dt=tf.to_float(dt), state=state
