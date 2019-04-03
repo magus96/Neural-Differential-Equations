@@ -61,7 +61,7 @@ class NeuralODE:
                 state = self._solver(
                     func=forward_dynamics, dt=tf.to_float(dt), state=state
                 )
-                _append_state(state)
+                append_state(state)
 
         outputs = state[1]
         if return_states:
