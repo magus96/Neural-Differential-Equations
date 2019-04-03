@@ -59,7 +59,7 @@ class NeuralODE:
         append_state(state)
         for dt in self._deltas_t:
                 state = self._solver(
-                    func=_forward_dynamics, dt=tf.to_float(dt), state=state
+                    func=forward_dynamics, dt=tf.to_float(dt), state=state
                 )
                 _append_state(state)
 
@@ -96,7 +96,7 @@ class NeuralODE:
             state = [t0, outputs, output_gradients, *grad_weights]
             for dt in self._deltas_t[::-1]:
                 state = self._solver(
-                    self._backward_dynamics, dt=-tf.to_float(dt), state=state
+                    self.backward_dynamics, dt=-tf.to_float(dt), state=state
                 )
 
         inputs = state[1]
