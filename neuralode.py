@@ -27,7 +27,7 @@ def runge_kutta_step(func,dt,state):
     k4 = func(euler_update(state, k3, dt))
     
     return zip_map(zip(state,k1,k1,k3,k4),
-                  lambda h,dk1,dk2,dk3,dk4:h+tf.cast(dt,h.type)*(dk1+2*dk2+2*dk3+dk4)/6,)
+                  lambda h,dk1,dk2,dk3,dk4:h+tf.cast(dt,h.dtype)*(dk1+2*dk2+2*dk3+dk4)/6,)
 
 class NeuralODE:
   def __init__(
