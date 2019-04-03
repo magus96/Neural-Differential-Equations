@@ -73,7 +73,7 @@ class NeuralODE:
         ht=state[1]
         at=state[2]
         
-        with tf.GradientTape as g:
+        with tf.GradientTape() as g:
           g.watch(ht)
           ht_new=self._model(inputs=[t,ht])
           
